@@ -1,9 +1,9 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
+import React from 'react';
+import { Image, StyleSheet } from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function HomeScreen() {
   return (
@@ -11,39 +11,39 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require('@/assets/images/img.jpg')}
+          style={styles.imginicio}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
+      }
+    >
+      <ThemedView style={styles.titulo}>
+        <ThemedText type="title">Seja bem vindo!</ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
+
+      <ThemedView style={styles.comentariocaixa}>
+        <ThemedText style={styles.comentario}>
+          Conecte-se diretamente às minhas redes sociais pessoais e acompanhe todas as novidades em um só lugar!
         </ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
+
+      <ThemedView style={styles.subtitulocaixa}>
+
+        <ThemedText style={styles.subtitulo}>O que você encontrará aqui:</ThemedText>
+
+        <ThemedText style={styles.topico}>
+          <Icon name="check-circle" size={16} color="#147EFB" />  Acesso direto aos meus perfis em várias redes sociais.
+        </ThemedText>
+        <ThemedText style={styles.topico}>
+          <Icon name="check-circle" size={16} color="#147EFB" />  Informações de contato para interação pessoal.
+        </ThemedText>
+        <ThemedText style={styles.topico}>
+          <Icon name="check-circle" size={16} color="#147EFB" />  Atualizações e posts recentes de todas as minhas contas.
         </ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+
+      <ThemedView style={styles.saibamaiscaixa}>
+        <ThemedText style={styles.saibamais}>
+          <Icon name="info-circle" size={16} color="#FFFFFF" /> Acesse a aba Perfil e saiba mais.
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
@@ -51,20 +51,69 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  imginicio: {
+    height: 290,
+    width: '99%',
+    marginLeft: 2,
+    resizeMode: 'cover', // Ajustado para cobrir a área especificada
   },
-  stepContainer: {
-    gap: 8,
+
+  titulo: {
+    marginLeft: 5,
+    marginBottom: 1,
+  },
+
+  comentariocaixa: {
+    marginBottom: 20,
+    marginTop: 2,
+    padding: 15,
+    backgroundColor: '#E0F7FA',
+    borderRadius: 10,
+    borderColor: '#00796B',
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#DCDCDC', // Define a cor da sombra.
+    shadowOpacity: 0.05, //Define a opacidade da sombra.
+    shadowRadius: 2.74, //Define o raio da sombra.
+    elevation: 16, // Adiciona uma elevação para criar uma sombra no Android.
+
+  },
+  comentario: {
+    fontSize: 16,
+    color: '#004D40',
+    textAlign: 'center',
+  },
+
+  subtitulocaixa: {
+    paddingLeft: 10,
+    marginBottom: 15,
+  },
+  subtitulo: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+
+  topico: {
+    fontSize: 16,
+    marginTop: 8,
     marginBottom: 8,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+
+  saibamaiscaixa: {
+    marginTop: 13,
+    padding: 15,
+    backgroundColor: '#1E90FF',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+  saibamais: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    textAlign: 'center',
+  },
+
 });

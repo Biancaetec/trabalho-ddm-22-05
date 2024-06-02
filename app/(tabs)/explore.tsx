@@ -1,102 +1,180 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Image, Platform } from 'react-native';
+import { StyleSheet, Image, TouchableOpacity, Linking, View, ScrollView } from 'react-native';
+import { BlurView } from 'expo-blur';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function TabTwoScreen() {
+  const handleEmailPress = () => {
+    Linking.openURL('https://mail.google.com/mail/u/0/?ogbl#inbox');
+  };
+
+  const handleWhatsappPress = () => {
+    Linking.openURL('https://api.whatsapp.com/send/?phone=18996152301&text&type=phone_number&app_absent=0');
+  };
+
+  const handleInstagramPress = () => {
+    Linking.openURL('https://www.instagram.com/_.bianca.limaa/?igsh=M2NzaDk1YjViYnAy');
+  };
+
+  const handleTiktokPress = () => {
+    Linking.openURL('https://www.tiktok.com/@bianca.limaa_?_t=8lxN3osZDtu&_r=1');
+  };
+
+  const handleTwitterPress = () => {
+    Linking.openURL('https://x.com/BiancaLima89966');
+  };
+
+  const handleTelefonePress = () => {
+    const phoneNumber = '18996152301'; // Número de telefone que você deseja discar
+    const url = `tel:${phoneNumber}`;
+    Linking.openURL(url);
+  };
+
+  const handleLinkdinPress = () => {
+    Linking.openURL('https://www.linkedin.com/in/bianca-lima-23251b311/');
+  };
+
+  const handleGithubPress = () => {
+    Linking.openURL('https://github.com/Biancaetec');
+  };
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText> library
-          to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <ScrollView style={styles.container}>
+
+
+      <View style={styles.container}>
+        <Image source={require('@/assets/images/imgfundoperfil.jpg')} style={styles.headerImage} />
+
+        <ThemedView style={styles.container}>
+          <View style={styles.outerContainer}>
+            <BlurView intensity={85} style={styles.blurContainer}>
+              <View style={styles.innerContainer}>
+                <Image source={require('@/assets/images/fotoperfil.jpg')} style={styles.perfil} />
+              </View>
+            </BlurView>
+          </View>
+          <ThemedText type="title" style={styles.nome}>Bianca Lima Neves</ThemedText>
+        </ThemedView>
+
+        <ThemedView style={styles.conteinerBotao}>
+          <TouchableOpacity style={styles.botao} onPress={handleEmailPress}>
+            <Ionicons name="mail-outline" size={24} color="white" />
+            <ThemedText style={styles.textoBotao}>Email</ThemedText>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={handleWhatsappPress}>
+            <Ionicons name="logo-whatsapp" size={24} color="white" />
+            <ThemedText style={styles.textoBotao}>Whatsapp</ThemedText>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={handleInstagramPress}>
+            <Ionicons name="logo-instagram" size={24} color="white" />
+            <ThemedText style={styles.textoBotao}>Instagram</ThemedText>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={handleTiktokPress}>
+            <Ionicons name="logo-tiktok" size={24} color="white" />
+            <ThemedText style={styles.textoBotao}>TikTok</ThemedText>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={handleTwitterPress}>
+            <Ionicons name="logo-twitter" size={24} color="white" />
+            <ThemedText style={styles.textoBotao}>Twitter</ThemedText>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={handleTelefonePress}>
+            <Ionicons name="call-outline" size={24} color="white" />
+            <ThemedText style={styles.textoBotao}>Telefone</ThemedText>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={handleLinkdinPress}>
+            <Ionicons name="logo-linkedin" size={24} color="white" />
+            <ThemedText style={styles.textoBotao}>LinkedIn</ThemedText>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={handleGithubPress}>
+            <Ionicons name="logo-github" size={24} color="white" />
+            <ThemedText style={styles.textoBotao}>Github</ThemedText>
+          </TouchableOpacity>
+        </ThemedView>
+      </View>
+    </ScrollView>
+
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
+    height: 250,
+    width: '100%',
+  },
+
+  outerContainer: {
+    width: 142,
+    height: 142,
+    borderRadius: 71,
+    overflow: 'hidden',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: -80,
+    marginLeft: 120,
+    position: 'absolute',
+    zIndex: 2, // Traz a imagem para a frente
+  },
+  blurContainer: {
+    width: 142,
+    height: 142,
+    borderRadius: 71,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  innerContainer: {
+    width: 130,
+    height: 130,
+    borderRadius: 65,
+    overflow: 'hidden',
+  },
+  perfil: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 65,
+  },
+  nome: {
+    fontSize: 23,
+    textAlign: 'center',
+    marginTop: 70, // Ajuste conforme necessário
+    marginLeft: 84,
     position: 'absolute',
   },
-  titleContainer: {
+  botao: {
+    backgroundColor: '#C0C0C0',
+    borderWidth: 2,
+    borderColor: '#808080',
     flexDirection: 'row',
-    gap: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '90%',
+    height: 50,
+    borderRadius: 10,
+    marginBottom: 8,
+    position: 'relative',
+
+  },
+  conteinerBotao: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 140, // Ajuste para deslocar os botões mais para baixo
+
+  },
+  textoBotao: {
+    marginLeft: 10,
+    fontSize: 18,
+    color: 'white',
   },
 });
