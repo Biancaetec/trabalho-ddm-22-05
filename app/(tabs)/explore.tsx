@@ -6,9 +6,13 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function TabTwoScreen() {
-  const handleEmailPress = () => {
-    Linking.openURL('https://mail.google.com/mail/u/0/?ogbl#inbox');
-  };
+  // const handleEmailPress = () => {
+  //   Linking.openURL('https://mail.google.com/mail/u/0/?ogbl#inbox');
+  // };
+
+  function openEmail(email: string, subject: string, body: string) {
+    Linking.openURL(`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+  }
 
   const handleWhatsappPress = () => {
     Linking.openURL('https://api.whatsapp.com/send/?phone=18996152301&text&type=phone_number&app_absent=0');
@@ -59,7 +63,7 @@ export default function TabTwoScreen() {
         </ThemedView>
 
         <ThemedView style={styles.conteinerBotao}>
-          <TouchableOpacity style={styles.botao} onPress={handleEmailPress}>
+          <TouchableOpacity style={styles.botao} onPress={()=> openEmail ('biancalimaneves90@gmail.com', 'Atividade de DDM', 'Olá, Pessoal !!')}>
             <Ionicons name="mail-outline" size={24} color="white" />
             <ThemedText style={styles.textoBotao}>Email</ThemedText>
           </TouchableOpacity>
